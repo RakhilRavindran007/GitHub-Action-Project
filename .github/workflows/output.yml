@@ -1,0 +1,11 @@
+name: GitHub OutPut
+on: 
+  issues: 
+    type: opened
+jobs:
+  OutPut:
+    name: OutPut
+    runs-on: ubuntu-latest
+    steps:
+      - name:  output context
+        run: echo "${{ toJSON(github)}}"

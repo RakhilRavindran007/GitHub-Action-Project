@@ -1,0 +1,41 @@
+name:  Test&Deploy
+on: push
+jobs:
+  Lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Code Lint
+        run: npm lint
+
+  Test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: Lint
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Code Test
+        run: npm test
+
+  Build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [Lint, Test]
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Code Test
+        run: npm build
+  
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: Build
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Code Deploy
+        run: echo "Code Deploying....."
