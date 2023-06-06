@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
       - name: Code Lint
         run: npm run lint
 
@@ -17,6 +19,8 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
       - name: Code Test
         run: npm test
 
@@ -27,8 +31,10 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
       - name: Code Test
-        run: npm build
+        run: npm run build
   
   Deploy:
     name: Deploy
