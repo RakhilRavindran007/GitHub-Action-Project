@@ -61,6 +61,8 @@ jobs:
             deploy
       - name: list
         run: ls
+      - name: output
+        run: echo "${{ needs.Build.outputs.output}}"
       - name: Code Checkout
         uses: actions/checkout@v3
       - name: Code Deploy
