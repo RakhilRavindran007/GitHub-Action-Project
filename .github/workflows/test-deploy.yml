@@ -28,6 +28,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     needs: [Lint, Test]
+    outputs:
+      output: ${{ steps.first-output.outputs.test}}
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
@@ -35,6 +37,8 @@ jobs:
         run: npm ci
       - name: Code Build
         run: npm run build
+      - id: first-output
+        run: find dist/assets/*.js echo "test= {}" >> "$GITHUB_OUTPUT"
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
