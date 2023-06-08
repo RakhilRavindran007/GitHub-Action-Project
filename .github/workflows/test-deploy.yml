@@ -51,7 +51,9 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with: 
-          name: download
+          name: first-artifact
+          path:
+            deploy
       - name: list
         run: ls
       - name: Code Checkout
