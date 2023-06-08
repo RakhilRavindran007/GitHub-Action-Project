@@ -35,6 +35,13 @@ jobs:
         run: npm ci
       - name: Code Build
         run: npm run build
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: first-artifact
+          path: |
+            build
+            package.json
   
   Deploy:
     name: Deploy
