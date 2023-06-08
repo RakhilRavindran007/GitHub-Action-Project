@@ -38,7 +38,7 @@ jobs:
       - name: Code Build
         run: npm run build
       - id: first-output
-        run:  echo "test=find dist/assets/*.js" >> "$GITHUB_OUTPUT"
+        run: echo "test=${find . -type f "*.js"}" >> "$GITHUB_OUTPUT"
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3
         with:
